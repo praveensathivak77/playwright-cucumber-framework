@@ -27,6 +27,7 @@ class HomePage {
 
         this.targetSection = this.page.locator('[data-id="09ef7d4"]');
         this.menuItem = this.page.locator('#menu-item-123');
+        this.cubeMenu = this.page.locator('#menu-item-120');
     }
 
     async visit() {
@@ -87,18 +88,21 @@ class HomePage {
                 await this.page.bringToFront();
                 await this.page.waitForTimeout(500);
 
-            } catch (error) {
-
-                await linkedInLink.click();
-
-            }
+}
+    catch (error) {await linkedInLink.click();
         }
     }
-
+}
     async verifyTargetSectionVisible() {
         await this.targetSection.scrollIntoViewIfNeeded();
         await expect(this.targetSection).toBeVisible();
     }
+    async clickCubeMenu() {
+    await this.cubeMenu.scrollIntoViewIfNeeded();
+    await expect(this.cubeMenu).toBeVisible();
+    await this.cubeMenu.click();
+    await this.page.waitForTimeout(3000);
+}
 }
 
 module.exports = HomePage;

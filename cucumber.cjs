@@ -3,9 +3,7 @@ default: {
     require: [
     "step-definitions/**/*.js"
     ],
-    paths: [
-    "features/**/*.feature"
-    ],
+    paths: [],
     format: [
     "progress",
     "html:reports/cucumber-report.html"
