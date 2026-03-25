@@ -23,3 +23,7 @@ Then('Cube result section should be visible', async function () {
 When('User navigates deep cube sections', async function () {
     await this.cubePage.navigateCubeDeepSections();
 });
+
+When('User interacts with bb section', async function () {
+    await this.cubePage.interactWithBbSection();
+});

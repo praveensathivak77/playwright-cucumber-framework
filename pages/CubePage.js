@@ -26,17 +26,13 @@ class CubePage {
         await expect(this.resultSection).toBeVisible();
     }
 
-    // ✅ NEW METHOD (your deep navigation)
     async navigateCubeDeepSections() {
-
-        // Scroll
         await this.page.locator('[data-id="f59e042"]').scrollIntoViewIfNeeded();
         await this.page.waitForTimeout(1000);
 
         await this.page.locator('[data-id="26b456d"]').scrollIntoViewIfNeeded();
         await this.page.waitForTimeout(1000);
 
-        // Hover
         const hover1 = this.page.locator('[data-id="81a81a1"]');
         await hover1.scrollIntoViewIfNeeded();
         await hover1.hover();
@@ -57,7 +53,6 @@ class CubePage {
         await hover4.hover();
         await this.page.waitForTimeout(1000);
 
-        // Scroll again
         await this.page.locator('[data-id="e6d1fa4"]').scrollIntoViewIfNeeded();
         await this.page.waitForTimeout(1000);
 
@@ -66,6 +61,52 @@ class CubePage {
 
         await this.page.locator('[data-id="622ec38"]').scrollIntoViewIfNeeded();
         await this.page.waitForTimeout(1000);
+    }
+
+    async navigateCubeCardsSection() {
+
+        const mainSection = this.page.locator('[data-elementor-id="2337"]');
+        await mainSection.scrollIntoViewIfNeeded();
+
+        // First card
+        const card1 = this.page.locator('[data-id="dabcc99"]');
+        await card1.scrollIntoViewIfNeeded();
+        await card1.click();
+        await this.page.waitForTimeout(2000);
+
+        await mainSection.scrollIntoViewIfNeeded();
+
+        // Second card
+        const card2 = this.page.locator('[data-id="30045d9"]');
+        await card2.scrollIntoViewIfNeeded();
+        await card2.click();
+
+        const verify2 = this.page.locator('[data-id="dc7f641"]');
+        await verify2.waitFor({ state: 'visible', timeout: 10000 });
+
+        await mainSection.scrollIntoViewIfNeeded();
+
+        // Third card
+        const card3 = this.page.locator('[data-id="361bd08"]');
+        await card3.scrollIntoViewIfNeeded();
+        await card3.click();
+
+        const verify3 = this.page.locator('[data-id="cb233b0"]');
+        await verify3.waitFor({ state: 'visible', timeout: 10000 });
+    }
+
+    // ✅ NEW SECTION (bb88691)
+    async interactWithBbSection() {
+
+        const section = this.page.locator('[data-id="bb88691"]');
+
+        await section.scrollIntoViewIfNeeded();
+        await expect(section).toBeVisible();
+
+        // Click action (adjust if needed)
+        await section.click();
+
+        await this.page.waitForTimeout(2000);
     }
 }
 
